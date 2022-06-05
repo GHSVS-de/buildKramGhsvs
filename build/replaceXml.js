@@ -6,7 +6,15 @@ const fse = require('fs-extra');
 const pc = require('picocolors');
 const path = require('path');
 
-// module.exports.main = async (xmlFile, zipFilename, checksum, thisPackages) =>
+/*
+replaceXmlOptions = {
+	"xmlFile": abs Pfad zu Datei mit Platzhaltern drinnen,
+	"zipFilename": ,
+	"checksum": Der Checksum-Tag,
+	"dirname": __dirname, also abs Pfad des aufrufenden Repos.
+};
+*/
+
 module.exports.main = async (replaceXmlOptions) =>
 {
   try
@@ -38,14 +46,15 @@ module.exports.main = async (replaceXmlOptions) =>
 		let checksum = replaceXmlOptions.checksum;
 		let thisPackages = replaceXmlOptions.thisPackages;
 
-		let targetPlatforms = update.targetplatform;
-
 		let checksumEntity = '';
+
 		if (checksum)
 		{
 			checksumEntity = checksum.replace(/</g, '&lt;');
 			checksumEntity = checksumEntity.replace(/>/g, '&gt;');
 		}
+
+		let targetPlatforms = update.targetplatform;
 
 		// B\C
 		if (! Array.isArray(targetPlatforms))
@@ -85,55 +94,65 @@ module.exports.main = async (replaceXmlOptions) =>
 
 		let uses = releaseTxt.uses ? releaseTxt.uses : [];
 
+		let replacer = {
+			allowDowngrades: allowDowngrades,
+			authorName: author.name,
+			authorUrl: author.url,
+			bugs: bugs,
+			checksum: checksum,
+			checksumEntity: checksumEntity,
+			client: update.client,
+			copyright: copyright,
+			creationDate: creationDate,
+			description: description,
+			docsDE: changelog.docsDE,
+			docsEN: changelog.docsEN,
+			element: filename,
+			filename: filename,
+			folder: update.folder,
+			infosDE: changelog.infosDE,
+			infosEN: changelog.infosEN,
+			lastTests: changelog.lastTests.join('<br>'),
+			licenseLong: licenseLong,
+			maintainer: author.name,
+			maintainerurl: author.url,
+			maximumJoomla: maximumJoomla,
+			maximumPhp: maximumPhp,
+			minimumJoomla: minimumJoomla,
+			minimumPhp: minimumPhp,
+			name: name,
+			nameReal: nameReal,
+			nameRealUpper: nameReal.toUpperCase(),
+			namespace: namespace,
+			nameUpper: name.toUpperCase(),
+			php_minimum: minimumPhp,
+			projecturl: changelog.projecturl,
+			"releaseTxt.title": releaseTxt.title,
+			requires: requires.join("<br>"),
+			tag: update.tag,
+			thisPackages: thisPackages,
+			thisPackagesHtml: thisPackagesHtml,
+			type: update.type,
+			uses: uses.join("<br>"),
+			version: version,
+			versionCompare: versionCompare,
+			zipFilename: zipFilename
+		};
+
 		let fileContent = '';
 
 		for (const targetplatform of targetPlatforms)
 		{
+			replacer.targetplatform = targetplatform;
+			replacer.targetplatformHtml = targetplatform.replace(/\*/g, '&ast;');
+
 			let xml = await fse.readFile(xmlFile, { encoding: "utf8" });
-			xml = xml.replace(/{{allowDowngrades}}/g, allowDowngrades);
-			xml = xml.replace(/{{authorName}}/g, author.name);
-			xml = xml.replace(/{{authorUrl}}/g, author.url);
-			xml = xml.replace(/{{bugs}}/g, bugs);
-			xml = xml.replace(/{{checksum}}/g, checksum);
-			xml = xml.replace(/{{checksumEntity}}/g, checksumEntity);
-			xml = xml.replace(/{{client}}/g, update.client);
-			xml = xml.replace(/{{copyright}}/g, copyright);
-			xml = xml.replace(/{{creationDate}}/g, creationDate);
-			xml = xml.replace(/{{description}}/g, description);
-			xml = xml.replace(/{{docsDE}}/g, changelog.docsDE);
-			xml = xml.replace(/{{docsEN}}/g, changelog.docsEN);
-			xml = xml.replace(/{{element}}/g, filename);
-			xml = xml.replace(/{{filename}}/g, filename);
-			xml = xml.replace(/{{folder}}/g, update.folder);
-			xml = xml.replace(/{{infosDE}}/g, changelog.infosDE);
-			xml = xml.replace(/{{infosEN}}/g, changelog.infosEN);
-			xml = xml.replace(/{{lastTests}}/g, changelog.lastTests.join('<br>'));
-			xml = xml.replace(/{{licenseLong}}/g, licenseLong);
-			xml = xml.replace(/{{maintainer}}/g, author.name);
-			xml = xml.replace(/{{maintainerurl}}/g, author.url);
-			xml = xml.replace(/{{maximumJoomla}}/g, maximumJoomla);
-			xml = xml.replace(/{{maximumPhp}}/g, maximumPhp);
-			xml = xml.replace(/{{minimumJoomla}}/g, minimumJoomla);
-			xml = xml.replace(/{{minimumPhp}}/g, minimumPhp);
-			xml = xml.replace(/{{name}}/g, name);
-			xml = xml.replace(/{{nameReal}}/g, nameReal);
-			xml = xml.replace(/{{nameRealUpper}}/g, nameReal.toUpperCase());
-			xml = xml.replace(/{{namespace}}/g, namespace);
-			xml = xml.replace(/{{nameUpper}}/g, name.toUpperCase());
-			xml = xml.replace(/{{thisPackages}}/g, thisPackages);
-			xml = xml.replace(/{{thisPackagesHtml}}/g, thisPackagesHtml);
-			xml = xml.replace(/{{php_minimum}}/g, minimumPhp);
-			xml = xml.replace(/{{projecturl}}/g, changelog.projecturl);
-			xml = xml.replace(/{{releaseTxt.title}}/g, releaseTxt.title);
-			xml = xml.replace(/{{requires}}/g, requires.join("<br>"));
-			xml = xml.replace(/{{tag}}/g, update.tag);
-			xml = xml.replace(/{{targetplatform}}/g, targetplatform);
-			xml = xml.replace(/{{targetplatformHtml}}/g, targetplatform.replace(/\*/g, '&ast;'));
-			xml = xml.replace(/{{type}}/g, update.type);
-			xml = xml.replace(/{{uses}}/g, uses.join("<br>"));
-			xml = xml.replace(/{{version}}/g, version);
-			xml = xml.replace(/{{versionCompare}}/g, versionCompare);
-			xml = xml.replace(/{{zipFilename}}/g, zipFilename);
+
+			Object.keys(replacer).forEach(key =>
+			{
+				let regex = new RegExp(`{{${key}}}`, "g");
+				xml = xml.replace(regex, replacer[key]);
+			});
 
 			fileContent = fileContent + xml;
 		}
@@ -143,8 +162,6 @@ module.exports.main = async (replaceXmlOptions) =>
 		answer => console.log(pc.green(pc.bold(
 			`Replaced entries in "${xmlFile}".`)))
 		);
-
-    // return true;
   } catch (error) {
     console.error(error)
     process.exit(1)

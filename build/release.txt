@@ -4,8 +4,12 @@
 
 Checksum entities: `{{checksumEntity}}`
 
-- {{description}}
-- [Download {{zipFilename}}](https://github.com/GHSVS-de/{{name}}/raw/{{version}}/dist/{{zipFilename}})
+{{description}}
+
+### Download
+[{{zipFilename}}](https://github.com/GHSVS-de/{{name}}/raw/{{version}}/dist/{{zipFilename}})
+
+### For the interested ones
 - [Compare releases {{versionCompare}}...{{version}}](https://github.com/GHSVS-de/{{name}}/compare/{{versionCompare}}...{{version}})
 - [Changelogs](https://updates.ghsvs.de/changelog.php?file={{name}})
 - Checksum: `{{checksum}}`

@@ -77,6 +77,8 @@ module.exports.main = async (replaceXmlOptions) =>
 
 		let namespace = update.namespace ?
 			`<namespace path="src">${update.namespace}</namespace>` : "";
+		let addfieldprefix = update.namespace ?
+			` addfieldprefix="${update.namespace}\\Field"` : "";
 
 		let thisPackagesHtml = '';
 
@@ -95,6 +97,7 @@ module.exports.main = async (replaceXmlOptions) =>
 		let uses = releaseTxt.uses ? releaseTxt.uses : [];
 
 		let replacer = {
+			addfieldprefix: addfieldprefix,
 			allowDowngrades: allowDowngrades,
 			authorName: author.name,
 			authorUrl: author.url,

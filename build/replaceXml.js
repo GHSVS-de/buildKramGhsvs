@@ -95,6 +95,7 @@ module.exports.main = async (replaceXmlOptions) =>
 		}
 
 		let uses = releaseTxt.uses ? releaseTxt.uses : [];
+		let language = releaseTxt.language ? releaseTxt.language : [];
 
 		let replacer = {
 			addfieldprefix: addfieldprefix,
@@ -115,6 +116,7 @@ module.exports.main = async (replaceXmlOptions) =>
 			folder: update.folder,
 			infosDE: changelog.infosDE,
 			infosEN: changelog.infosEN,
+			language: language.join("<br>"),
 			lastTests: changelog.lastTests.join('<br>'),
 			licenseLong: licenseLong,
 			maintainer: author.name,

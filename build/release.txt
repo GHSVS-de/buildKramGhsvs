@@ -17,6 +17,7 @@ Checksum entities: `{{checksumEntity}}`
 - Updates XML: https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/{{name}}-update.xml
 - Last tests: {{lastTests}}
 - Joomla-Target-Platform: {{targetplatformHtml}}
+- Language files: {{language}}
 - Requires: {{requires}}
 - Uses: {{uses}}
 - Contained packages (sub Joomla extensions):

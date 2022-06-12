@@ -9,6 +9,9 @@ Checksum entities: `{{checksumEntity}}`
 ### Download
 [{{zipFilename}}](https://github.com/GHSVS-de/{{name}}/raw/{{version}}/dist/{{zipFilename}})
 
+### Joomla-Target-Platform(s)
+{{targetplatformHtml}}
+
 ### For the interested ones
 - [Compare releases {{versionCompare}}...{{version}}](https://github.com/GHSVS-de/{{name}}/compare/{{versionCompare}}...{{version}})
 - [Changelogs](https://updates.ghsvs.de/changelog.php?file={{name}})
@@ -16,7 +19,6 @@ Checksum entities: `{{checksumEntity}}`
 - Changelogs XML: https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/{{name}}-changelog.xml
 - Updates XML: https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/{{name}}-update.xml
 - Last tests: {{lastTests}}
-- Joomla-Target-Platform: {{targetplatformHtml}}
 - Language files: {{language}}
 - Requires: {{requires}}
 - Uses: {{uses}}

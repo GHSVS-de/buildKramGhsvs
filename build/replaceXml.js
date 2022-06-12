@@ -77,8 +77,21 @@ module.exports.main = async (replaceXmlOptions) =>
 
 		let namespace = update.namespace ?
 			`<namespace path="src">${update.namespace}</namespace>` : "";
-		let addfieldprefix = update.namespace ?
-			` addfieldprefix="${update.namespace}\\Field"` : "";
+
+		let addfieldprefix = "";
+
+		if (namespace)
+		{
+			let tmp = "";
+
+			if (update.type === 'module')
+			{
+				tmp = update.client;
+				tmp = `\\${tmp.charAt(0).toUpperCase()}${tmp.slice(1)}`;
+			}
+
+			addfieldprefix = ` addfieldprefix="${update.namespace}${tmp}\\Field"`;
+		}
 
 		let thisPackagesHtml = '';
 

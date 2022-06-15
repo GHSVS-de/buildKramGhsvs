@@ -4,6 +4,7 @@
 Mein Build-Kram, der von mehren lokalen Repos verwendet wird, damit nicht jedes mal die selben build-Skripte angelegt und geprüft werden müssen.
 
 ## Used by
+- [hugo_baseghsvs](https://github.com/GHSVS-de/hugo_baseghsvs)
 - [mod_custom_blankghsvs](https://github.com/GHSVS-de/mod_custom_blankghsvs)
 - [mod_splideghsvs](https://github.com/GHSVS-de/mod_splideghsvs)
 - [plg_content_prismhighlighterghsvs](https://github.com/GHSVS-de/plg_content_prismhighlighterghsvs)
@@ -22,7 +23,7 @@ Mein Build-Kram, der von mehren lokalen Repos verwendet wird, damit nicht jedes 
 - `npm run update` (if needed) or (faster) `npm update --save-dev`
 - `npm install` (if needed)
 
-## Inclusion example in other repo's build.js
+## Inclusion examples in other repo's build.js
 
 ```js
 // Example plg_system_onuserghsvs
@@ -30,12 +31,15 @@ Mein Build-Kram, der von mehren lokalen Repos verwendet wird, damit nicht jedes 
 const path = require('path');
 
 /* Configure START */
-const pathBuildKram = path.resolve("../buildKramGhsvs/build");
-const updateXml = `${pathBuildKram}/update.xml`;
-const changelogXml = `${pathBuildKram}/changelog.xml`;
-const releaseTxt = `${pathBuildKram}/release.txt`;
+const pathBuildKram = path.resolve("../buildKramGhsvs");
+const updateXml = `${pathBuildKram}/build/update.xml`;
+const changelogXml = `${pathBuildKram}/build/changelog.xml`;
+const releaseTxt = `${pathBuildKram}/build/release.txt`;
 /* Configure END */
 
-const replaceXml = require(`${pathBuildKram}/replaceXml.js`);
-const helper = require(`${pathBuildKram}/helper.js`);
+const replaceXml = require(`${pathBuildKram}/build/replaceXml.js`);
+const helper = require(`${pathBuildKram}/build/helper.js`);
+
+const pc = require(`${pathBuildKram}/node_modules/picocolors`);
+const fse = require(`${pathBuildKram}/node_modules/fs-extra`);
 ```

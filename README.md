@@ -9,9 +9,12 @@ Mein Build-Kram, der von mehren lokalen Repos verwendet wird, damit nicht jedes 
 - [mod_splideghsvs](https://github.com/GHSVS-de/mod_splideghsvs)
 - [mod_tocghsvs](https://github.com/GHSVS-de/mod_tocghsvs)
 - [plg_content_prismhighlighterghsvs](https://github.com/GHSVS-de/plg_content_prismhighlighterghsvs)
-- [plg_system_onuserghsvs](https://github.com/GHSVS-de/plg_system_onuserghsvs)
 - [plg_system_bs3ghsvs_bs5](https://github.com/GHSVS-de/plg_system_bs3ghsvs_bs5)
 - [plg_system_convertformsghsvs](https://github.com/GHSVS-de/plg_system_convertformsghsvs)
+- [plg_system_hyphenateghsvs](https://github.com/GHSVS-de/plg_system_hyphenateghsvs)
+- [plg_system_importfontsghsvs](https://github.com/GHSVS-de/plg_system_importfontsghsvs)
+- [plg_system_onuserghsvs](https://github.com/GHSVS-de/plg_system_onuserghsvs)
+- [plg_system_venoboxghsvs](https://github.com/GHSVS-de/plg_system_venoboxghsvs)
 - [tpl_bs4ghsvs](https://github.com/GHSVS-de/tpl_bs4ghsvs)
 
 ----------------------

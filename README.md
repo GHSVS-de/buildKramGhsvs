@@ -7,10 +7,12 @@ Mein Build-Kram, der von mehren lokalen Repos verwendet wird, damit nicht jedes 
 - [hugo_baseghsvs](https://github.com/GHSVS-de/hugo_baseghsvs)
 - [mod_custom_blankghsvs](https://github.com/GHSVS-de/mod_custom_blankghsvs)
 - [mod_splideghsvs](https://github.com/GHSVS-de/mod_splideghsvs)
+- [mod_tocghsvs](https://github.com/GHSVS-de/mod_tocghsvs)
 - [plg_content_prismhighlighterghsvs](https://github.com/GHSVS-de/plg_content_prismhighlighterghsvs)
 - [plg_system_onuserghsvs](https://github.com/GHSVS-de/plg_system_onuserghsvs)
 - [plg_system_bs3ghsvs_bs5](https://github.com/GHSVS-de/plg_system_bs3ghsvs_bs5)
 - [plg_system_convertformsghsvs](https://github.com/GHSVS-de/plg_system_convertformsghsvs)
+- [tpl_bs4ghsvs](https://github.com/GHSVS-de/tpl_bs4ghsvs)
 
 ----------------------
 

@@ -7,17 +7,17 @@ Checksum entities: `{{checksumEntity}}`
 {{description}}
 
 ### Download
-[{{zipFilename}}](https://github.com/GHSVS-de/{{name}}/raw/{{version}}/dist/{{zipFilename}})
+[{{zipFilename}}]({{projecturl}}/raw/{{version}}/dist/{{zipFilename}})
 
 ### Joomla-Target-Platform(s)
 {{targetplatformHtml}}
 
 ### For the interested ones
-- [Compare releases {{versionCompare}}...{{version}}](https://github.com/GHSVS-de/{{name}}/compare/{{versionCompare}}...{{version}})
-- [Changelogs](https://updates.ghsvs.de/changelog.php?file={{name}})
+- [Compare releases {{versionCompare}}...{{version}}]({{projecturl}}/compare/{{versionCompare}}...{{version}})
+- [Changelogs](https://updates.ghsvs.de/changelog.php?file={{updateFilePrefix}})
 - Checksum: `{{checksum}}`
-- Changelogs XML: https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/{{name}}-changelog.xml
-- Updates XML: https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/{{name}}-update.xml
+- Changelogs XML: https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/{{updateFilePrefix}}-changelog.xml
+- Updates XML: https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/{{updateFilePrefix}}-update.xml
 - Last tests: {{lastTests}}
 - Language files: {{language}}
 - Requires: {{requires}}

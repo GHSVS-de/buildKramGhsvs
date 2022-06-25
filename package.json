@@ -18,6 +18,7 @@
 		"adm-zip": "^0.5.9",
 		"cssunminifier": "^0.0.2",
 		"fs-extra": "^10.1.0",
+		"json-merger": "^1.1.9",
 		"line-reader": "^0.4",
 		"picocolors": "^1.0.0",
 		"recursive-readdir": "^2.2.2",

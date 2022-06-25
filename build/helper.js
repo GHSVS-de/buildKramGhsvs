@@ -8,6 +8,7 @@ const rimRaf = util.promisify(require("rimraf"));
 const pc = require('picocolors');
 const crypto = require('crypto');
 const lineReader = util.promisify(require('line-reader').eachLine);
+const jsonMerger = require("json-merger");
 
 module.exports.cleanOut = async (cleanOuts) =>
 {
@@ -45,7 +46,7 @@ module.exports.getChecksum = async (path, Digest) =>
   });
 }
 
-// Find version string in JSON file. E.g. for packageName 'scssphp/scssphp'
+// Find version string in JSON file. E.g. for packageName 'scssphp/scssphp' in composer/installed.json.
 module.exports.findVersionSub = async (packagesFile, packageName) =>
 {
 	console.log(pc.magenta(pc.bold(
@@ -134,4 +135,44 @@ module.exports.getExists = async (path) =>
   } catch {
     return false
   }
+}
+
+/*
+- Auch multidimensionales Mergen.
+- Json-Dateien als Array übergeben. ["a.json", "b.json"]
+- Absolute Pfade.
+*/
+module.exports.mergeJson = async (files) =>
+{
+	console.log(pc.magenta(pc.bold(
+		`helper.mergeJson:\n"- ${files[1]}"\nover\n"- ${files[0]}".`)));
+
+	const mergedJson = await jsonMerger.mergeFiles(files);
+
+	// Falls du mal Switch einbauen willst.
+	return JSON.stringify(mergedJson, null, '\t');
+}
+
+/*
+- Da musst aufpassen. Unterarrays werden nicht partiell ersetzt, sondern ausgetauscht. Nur oberste Dimension wird berücksichtigt.
+- z.B. 2 package.json mergen. Return JSON as string that can be used then via
+const {
+	filename,
+	name,
+	nameReal,
+	version,
+} = JSON.parse(mergedJson);
+
+- Absolute paths required.
+*/
+module.exports.mergeJsonSimple = async (file1, file2) =>
+{
+	console.log(pc.magenta(pc.bold(
+		`helper.mergeJsonSimple: "${file2}" over "${file1}".`)));
+
+	const result = require(file1);
+	const result2 = require(file2);
+	let mergedJson = Object.assign(result, result2);;
+
+	return JSON.stringify(mergedJson, null, '\t');
 }

@@ -25,7 +25,7 @@
 
 		<change>
 			<item><![CDATA[
-				<a href="https://github.com/GHSVS-de/{{name}}/compare/{{versionCompare}}...{{version}}">
+				<a href="{{projecturl}}/compare/{{versionCompare}}...{{version}}">
 					Compare code {{versionCompare}}...{{version}}
 				</a>
 			]]></item>
@@ -53,19 +53,19 @@
 			]]></item>
 
 			<item><![CDATA[
-				<a href="https://github.com/GHSVS-de/{{name}}/raw/{{version}}/dist/{{zipFilename}}">
+				<a href="{{projecturl}}/raw/{{version}}/dist/{{zipFilename}}">
 					Direct download {{zipFilename}}
 				</a>
 			]]></item>
 
 			<item><![CDATA[
-				<a href="https://updates.ghsvs.de/changelog.php?file={{name}}">
+				<a href="https://updates.ghsvs.de/changelog.php?file={{updateFilePrefix}}">
 					All changelogs
 				</a>
 			]]></item>
 
 			<item><![CDATA[
-				<a href="https://github.com/GHSVS-de/{{name}}/releases">
+				<a href="{{projecturl}}/releases">
 					All releases page
 				</a>
 			]]></item>

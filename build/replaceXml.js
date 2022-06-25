@@ -8,10 +8,12 @@ const path = require('path');
 
 /*
 replaceXmlOptions = {
-	"xmlFile": abs Pfad zu Datei mit Platzhaltern drinnen,
+	"xmlFile": abs Pfad zu Vorlagen-Datei mit Platzhaltern drinnen,
 	"zipFilename": ,
 	"checksum": Der Checksum-Tag,
 	"dirname": __dirname, also abs Pfad des aufrufenden Repos.
+	"thisPackages":
+	"jsonString": Die Möglichkeit ein "fertiges" JSON zu übergeben. Z.B. gemergtes Ergebnis aus helper.mergeJson().
 };
 */
 
@@ -19,6 +21,17 @@ module.exports.main = async (replaceXmlOptions) =>
 {
   try
   {
+		let jsonObj = {};
+
+		if (replaceXmlOptions.jsonString)
+		{
+			jsonObj = JSON.parse(replaceXmlOptions.jsonString);
+		}
+		else
+		{
+			jsonObj = require(path.join(replaceXmlOptions.dirname, "package.json"));
+		}
+
 		const {
 			author,
 			update,
@@ -39,7 +52,7 @@ module.exports.main = async (replaceXmlOptions) =>
 			maximumJoomla,
 			allowDowngrades,
 			bugs
-		} = require(path.join(replaceXmlOptions.dirname, "package.json"));
+		} = jsonObj;
 
 		let xmlFile = replaceXmlOptions.xmlFile;
 		let zipFilename = replaceXmlOptions.zipFilename;
@@ -124,7 +137,7 @@ module.exports.main = async (replaceXmlOptions) =>
 			description: description,
 			docsDE: changelog.docsDE,
 			docsEN: changelog.docsEN,
-			element: filename,
+			element: update.element ? update.element : filename,
 			filename: filename,
 			folder: update.folder,
 			infosDE: changelog.infosDE,
@@ -136,6 +149,7 @@ module.exports.main = async (replaceXmlOptions) =>
 			maintainerurl: author.url,
 			maximumJoomla: maximumJoomla,
 			maximumPhp: maximumPhp,
+			method: update.method ? update.method : 'upgrade',
 			minimumJoomla: minimumJoomla,
 			minimumPhp: minimumPhp,
 			name: name,
@@ -151,6 +165,8 @@ module.exports.main = async (replaceXmlOptions) =>
 			thisPackages: thisPackages,
 			thisPackagesHtml: thisPackagesHtml,
 			type: update.type,
+			// Abweichender Dateiname auf Upadate-Repo?
+			updateFilePrefix: update.updateFilePrefix ? update.updateFilePrefix : name,
 			uses: uses.join("<br>"),
 			version: version,
 			versionCompare: versionCompare,

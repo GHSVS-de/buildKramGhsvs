@@ -20,6 +20,16 @@ module.exports.cleanOut = async (cleanOuts) =>
 	}
 }
 
+module.exports.copy = async (from, to) =>
+{
+	await fse.copy(from, to
+	).then(
+		answer => console.log(
+			pc.yellow(pc.bold(`Copied "${from}" to "${to}".`))
+		)
+	).catch(error => console.error('Error ' + error))
+}
+
 // Digest sha256, sha384 or sha512.
 module.exports.getChecksum = async (path, Digest) =>
 {

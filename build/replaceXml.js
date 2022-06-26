@@ -194,7 +194,7 @@ module.exports.main = async (replaceXmlOptions) =>
 		await fse.writeFile(xmlFile, fileContent, { encoding: "utf8" }
 		).then(
 		answer => console.log(pc.green(pc.bold(
-			`Replaced entries in "${xmlFile}".`)))
+			`Replaced placeholders in "${xmlFile}".`)))
 		);
   } catch (error) {
     console.error(error)

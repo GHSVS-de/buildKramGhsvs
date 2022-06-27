@@ -16,8 +16,8 @@ Checksum entities: `{{checksumEntity}}`
 - [Compare releases {{versionCompare}}...{{version}}]({{projecturl}}/compare/{{versionCompare}}...{{version}})
 - [Changelogs](https://updates.ghsvs.de/changelog.php?file={{updateFilePrefix}})
 - Checksum: `{{checksum}}`
-- Changelogs XML: https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/{{updateFilePrefix}}-changelog.xml
-- Updates XML: https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/{{updateFilePrefix}}-update.xml
+- Changelogs XML: {{xmlserver}}/{{updateFilePrefix}}-changelog.xml
+- Updates XML: {{xmlserver}}/{{updateFilePrefix}}-update.xml
 - Last tests: {{lastTests}}
 - Language files: {{language}}
 - Requires: {{requires}}

@@ -21,6 +21,10 @@ module.exports.main = async (replaceXmlOptions) =>
 {
   try
   {
+		// Base url to update and changelog.xml of Joomla extensions.
+		// Can be overridden by parameter update.xmlserver in package.json.
+		let xmlserver = 'https://raw.githubusercontent.com/GHSVS-de/upadateservers/master';
+
 		let jsonObj = {};
 
 		if (replaceXmlOptions.jsonString)
@@ -170,6 +174,7 @@ module.exports.main = async (replaceXmlOptions) =>
 			uses: uses.join("<br>"),
 			version: version,
 			versionCompare: versionCompare,
+			xmlserver: update.xmlserver ? update.xmlserver : xmlserver,
 			zipFilename: zipFilename
 		};
 

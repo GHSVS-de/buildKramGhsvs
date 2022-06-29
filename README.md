@@ -1,7 +1,7 @@
 # buildKramGhsvs
  Centralized build scripts for my Joomla extensions. Reduce redundancy.
 
-Mein Build-Kram, der von mehren lokalen Repos verwendet wird, damit nicht jedes mal die selben build-Skripte angelegt und geprüft werden müssen.
+Mein Build-Kram, der von mehren lokalen Repos verwendet wird, damit nicht jedes mal die selben build-Skripte angelegt und geprüft werden müssen. Und npm-Updates.
 
 ## Used by
 - [hugo_baseghsvs](https://github.com/GHSVS-de/hugo_baseghsvs)
@@ -15,6 +15,7 @@ Mein Build-Kram, der von mehren lokalen Repos verwendet wird, damit nicht jedes 
 - [pkg_lib_structuredataghsvs](https://github.com/GHSVS-de/pkg_lib_structuredataghsvs)
 - [plg_content_prismhighlighterghsvs](https://github.com/GHSVS-de/plg_content_prismhighlighterghsvs)
 - [plg_system_bs3ghsvs_bs5](https://github.com/GHSVS-de/plg_system_bs3ghsvs_bs5)
+- [plg_system_characterscounterghsvs](https://github.com/GHSVS-de/plg_system_characterscounterghsvs)
 - [plg_system_convertformsghsvs](https://github.com/GHSVS-de/plg_system_convertformsghsvs)
 - [plg_system_hyphenateghsvs](https://github.com/GHSVS-de/plg_system_hyphenateghsvs)
 - [plg_system_importfontsghsvs](https://github.com/GHSVS-de/plg_system_importfontsghsvs)

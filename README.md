@@ -10,7 +10,7 @@ Dabei ist die Ordner-Struktur bei mir lokal so.
 /pfad/zu/git-kram/otherRepo
 ```
 
-## Inclusion examples in repo `otherRepo` `build.js`
+## Inclusion examples in repo `otherRepo/build.js`
 
 ```js
 // Example plg_system_onuserghsvs

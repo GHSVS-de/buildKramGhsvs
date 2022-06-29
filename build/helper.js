@@ -30,6 +30,17 @@ module.exports.copy = async (from, to) =>
 	).catch(error => console.error('Error ' + error))
 }
 
+module.exports.mkdir = async (to) =>
+{
+	if (!(await this.getExists(to)))
+	{
+		await fse.mkdir(to
+		).then(
+			answer => console.log(pc.yellow(pc.bold(`Created ${to}.`)))
+		).catch(error => console.error('Error ' + error));
+  }
+}
+
 // Digest sha256, sha384 or sha512.
 module.exports.getChecksum = async (path, Digest) =>
 {

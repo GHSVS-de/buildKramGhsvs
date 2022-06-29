@@ -103,6 +103,7 @@ module.exports.main = async (replaceXmlOptions) =>
 
 			if (update.type === 'module')
 			{
+				// client = site|administrator
 				tmp = update.client;
 				tmp = `\\${tmp.charAt(0).toUpperCase()}${tmp.slice(1)}`;
 			}

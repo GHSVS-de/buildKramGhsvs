@@ -23,7 +23,7 @@ module.exports.main = async (replaceXmlOptions) =>
   {
 		// Base url to update and changelog.xml of Joomla extensions.
 		// Can be overridden by parameter update.xmlserver in package.json.
-		let xmlserver = 'https://raw.githubusercontent.com/GHSVS-de/upadateservers/master';
+		const xmlserver = 'https://raw.githubusercontent.com/GHSVS-de/upadateservers/master';
 
 		let jsonObj = {};
 
@@ -62,6 +62,7 @@ module.exports.main = async (replaceXmlOptions) =>
 		let zipFilename = replaceXmlOptions.zipFilename;
 		let checksum = replaceXmlOptions.checksum;
 		let thisPackages = replaceXmlOptions.thisPackages;
+		const xmlFileRel = path.relative(replaceXmlOptions.dirname, xmlFile)
 
 		let checksumEntity = '';
 
@@ -200,7 +201,7 @@ module.exports.main = async (replaceXmlOptions) =>
 		await fse.writeFile(xmlFile, fileContent, { encoding: "utf8" }
 		).then(
 		answer => console.log(pc.green(pc.bold(
-			`Replaced placeholders in "${xmlFile}".`)))
+			`Replaced placeholders in "${xmlFileRel}".`)))
 		);
   } catch (error) {
     console.error(error)

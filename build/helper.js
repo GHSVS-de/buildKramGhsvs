@@ -10,6 +10,10 @@ const crypto = require('crypto');
 const lineReader = util.promisify(require('line-reader').eachLine);
 const jsonMerger = require("json-merger");
 
+// Possible Digest values (checksum).
+const Digests = ['sha256', 'sha384', 'sha512'];
+const defaultDigest = 'sha256';
+
 module.exports.cleanOut = async (cleanOuts) =>
 {
 	for (const file of cleanOuts)
@@ -60,12 +64,12 @@ module.exports.mkdir = async (to, options) =>
 	).catch(error => console.error('Error ' + error));
 }
 
-// Digest sha256, sha384 or sha512.
 module.exports.getChecksum = async (path, Digest) =>
 {
-	if (!Digest)
+	// B\C. See also _getChecksum().
+	if (! Digests.includes(Digest))
 	{
-		Digest = 'sha256';
+		Digest = defaultDigest;
 	}
 
   return new Promise(function (resolve, reject)
@@ -84,6 +88,32 @@ module.exports.getChecksum = async (path, Digest) =>
       resolve(hash.digest('hex'));
     });
   });
+}
+
+module.exports._getChecksum = async (filePath, Digest) =>
+{
+	// B\C. See also getChecksum().
+	if (! Digests.includes(Digest))
+	{
+		Digest = defaultDigest;
+	}
+
+	const checksum = await this.getChecksum(filePath, Digest)
+  .then(
+		hash => {
+			const tag = `<${Digest}>${hash}</${Digest}>`;
+			console.log(pc.green(pc.bold(`Checksum tag is: ${tag}`)));
+			return tag;
+		}
+	)
+	.catch(error => {
+		console.log(error);
+		console.log(pc.red(pc.bold(
+			`Error while checksum creation. I won't set one!`)));
+		return '';
+	});
+
+	return checksum;
 }
 
 // Find version string in JSON file. E.g. for packageName 'scssphp/scssphp' in composer/installed.json.

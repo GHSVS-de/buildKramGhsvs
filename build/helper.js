@@ -30,7 +30,7 @@ module.exports.copy = async (from, to) =>
 	).catch(error => console.error('Error ' + error))
 }
 
-module.exports.mkdir = async (to) =>
+module.exports.mkdirOld = async (to) =>
 {
 	if (!(await this.getExists(to)))
 	{
@@ -39,6 +39,25 @@ module.exports.mkdir = async (to) =>
 			answer => console.log(pc.yellow(pc.bold(`Created ${to}.`)))
 		).catch(error => console.error('Error ' + error));
   }
+}
+
+/*
+- Ensures that the directory exists.
+- If the directory structure does not exist, it is created.
+- options: For example:
+const options = {mode: 0o2775}
+*/
+module.exports.mkdir = async (to, options) =>
+{
+	if (! options)
+	{
+		options = {};
+	}
+
+	await fse.ensureDir(to, options
+	).then(
+		answer => console.log(pc.yellow(pc.bold(`Created ${to}.`)))
+	).catch(error => console.error('Error ' + error));
 }
 
 // Digest sha256, sha384 or sha512.

@@ -9,6 +9,7 @@ const pc = require('picocolors');
 const crypto = require('crypto');
 const lineReader = util.promisify(require('line-reader').eachLine);
 const jsonMerger = require("json-merger");
+const recursive = require("recursive-readdir");
 
 // Possible Digest values (checksum).
 const Digests = ['sha256', 'sha384', 'sha512'];
@@ -245,4 +246,58 @@ module.exports.mergeJsonSimple = async (file1, file2) =>
 	let mergedJson = Object.assign(result, result2);;
 
 	return JSON.stringify(mergedJson, null, '\t');
+}
+
+/*
+regex ist verpflichtend im Moment. Zu faul.
+Siehe mod_splideghsvs als Beispiel.
+folder: abs. Pfad.
+regex: Regex für zu suchende Dateien. z.B. '\.css$'.
+strip: Regex für zu entfernenden Teil aus Fund. Meist Pfad-Intro wie der folder selbst.
+exclude: Regex für zu ignorierende Funde. z.B. '\.min\.css$'.
+*/
+module.exports.getFilesRecursive = async (folder, regex, strip, exclude) =>
+{
+	let collector = [];
+
+	if (! strip)
+	{
+		strip = '';
+	}
+
+	let excludeRegex;
+
+	if (exclude)
+	{
+		excludeRegex = new RegExp(exclude);
+	}
+
+	const stripRegex = new RegExp(`^${strip}`, "g");
+
+	console.log(pc.magenta(pc.bold(`Start helper.getFilesRecursive: "${folder}".`)));
+
+	await recursive(folder).then(
+		function(files)
+		{
+			const thisRegex = new RegExp(regex);
+
+			files.forEach((file) =>
+			{
+				if (exclude && excludeRegex.test(file))
+				{
+					return;
+				}
+
+				if (thisRegex.test(file) && fse.lstatSync(file).isFile())
+				{
+					collector.push(file.replace(stripRegex, ''));
+				}
+			});
+		},
+		function(error) {
+			console.error("something exploded", error);
+		}
+	);
+
+	return collector;
 }

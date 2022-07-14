@@ -7,7 +7,7 @@
 		<folder>{{folder}}</folder>
 		<client>{{client}}</client>
 		<version>{{version}}</version>
-		<infourl>https://updates.ghsvs.de/changelog.php?file={{updateFilePrefix}}&amp;version={{version}}</infourl>
+		<infourl>{{infourl}}?file={{updateFilePrefix}}&amp;version={{version}}</infourl>
 
 		<changelogurl>{{xmlserver}}/{{updateFilePrefix}}-changelog.xml</changelogurl>
 

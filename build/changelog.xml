@@ -59,7 +59,7 @@
 			]]></item>
 
 			<item><![CDATA[
-				<a href="https://updates.ghsvs.de/changelog.php?file={{updateFilePrefix}}">
+				<a href="{{infourl}}?file={{updateFilePrefix}}">
 					All changelogs
 				</a>
 			]]></item>

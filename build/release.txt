@@ -14,7 +14,7 @@ Checksum entities: `{{checksumEntity}}`
 
 ### For the interested ones
 - [Compare releases {{versionCompare}}...{{version}}]({{projecturl}}/compare/{{versionCompare}}...{{version}})
-- [Changelogs](https://updates.ghsvs.de/changelog.php?file={{updateFilePrefix}})
+- [Changelogs]({{infourl}}?file={{updateFilePrefix}})
 - Checksum: `{{checksum}}`
 - Changelogs XML: {{xmlserver}}/{{updateFilePrefix}}-changelog.xml
 - Updates XML: {{xmlserver}}/{{updateFilePrefix}}-update.xml

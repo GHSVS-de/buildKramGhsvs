@@ -25,6 +25,10 @@ module.exports.main = async (replaceXmlOptions) =>
 		// Can be overridden by parameter update.xmlserver in package.json.
 		const xmlserver = 'https://raw.githubusercontent.com/GHSVS-de/upadateservers/master';
 
+		// Base url to my PHP changelogs viewer. Used in infourl.
+		// Can be overridden by parameter update.infourl in package.json.
+		const infourl = 'https://updates.ghsvs.de/changelog.php';
+
 		let jsonObj = {};
 
 		if (replaceXmlOptions.jsonString)
@@ -177,6 +181,7 @@ module.exports.main = async (replaceXmlOptions) =>
 			version: version,
 			versionCompare: versionCompare,
 			xmlserver: update.xmlserver ? update.xmlserver : xmlserver,
+			infourl: update.infourl ? update.infourl : infourl,
 			zipFilename: zipFilename
 		};
 

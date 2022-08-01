@@ -10,7 +10,6 @@
   "keywords": [],
 	"author": {
 		"name": "G@HService Berlin Neukölln, Volkmar Volli Schlothauer",
-		"email": "",
 		"url": "https://ghsvs.de"
 	},
   "license": "GPL-3.0",
@@ -18,6 +17,7 @@
 		"adm-zip": "^0.5.9",
 		"cssunminifier": "^0.0.2",
 		"dateformat": "<5",
+		"@dgrammatiko/compress": "1.0.4",
 		"fs-extra": "^10.1.0",
 		"json-merger": "^1.1.9",
 		"line-reader": "^0.4",

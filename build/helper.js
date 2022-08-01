@@ -11,6 +11,9 @@ const lineReader = util.promisify(require('line-reader').eachLine);
 const jsonMerger = require("json-merger");
 const recursive = require("recursive-readdir");
 
+const { getFiles } = require('@dgrammatiko/compress/src/getFiles.js');
+const { compressFile } = require('@dgrammatiko/compress/src/compressFile.js');
+
 // Possible Digest values (checksum).
 const Digests = ['sha256', 'sha384', 'sha512'];
 const defaultDigest = 'sha256';
@@ -207,6 +210,23 @@ module.exports.getExists = async (path) =>
     return false
   }
 }
+
+/*
+paths an array of folders.
+Creates a *.gz of all .min.css and .min.js.
+*/
+module.exports.gzip = async (paths) =>
+{
+	console.log(pc.magenta(pc.bold(`Start helper.gzip: "${paths}".`)));
+  const tasks = [];
+  const compressTasks = [];
+  paths.map((path) => tasks.push(getFiles(`${path}/`)));
+paths.map((path) => tasks.push(getFiles(`${path}/`)));
+  const files = await Promise.all(tasks);
+  [].concat(...files).map((file) => compressTasks.push(compressFile(file, false)));
+  await Promise.all(compressTasks);
+  console.log(pc.green(pc.bold(`Ended helper.gzip: "${paths}".`)));
+};
 
 /*
 - Auch multidimensionales Mergen.

@@ -33,28 +33,6 @@ const fse = require(`${pathBuildKram}/node_modules/fs-extra`);
 ```
 See `package.json.dependencies` for other npm packages provided by this repo.
 
-## Used by
-- [hugo_baseghsvs](https://github.com/GHSVS-de/hugo_baseghsvs)
-- [mod_contactghsvs](https://github.com/GHSVS-de/mod_contactghsvs)
-- [mod_custom_blankghsvs](https://github.com/GHSVS-de/mod_custom_blankghsvs)
-- [mod_extensionarticlesghsvs](https://github.com/GHSVS-de/mod_extensionarticlesghsvs)
-- [mod_splideghsvs](https://github.com/GHSVS-de/mod_splideghsvs)
-- [mod_toastghsvs](https://github.com/GHSVS-de/mod_toastghsvs)
-- [mod_tocghsvs](https://github.com/GHSVS-de/mod_tocghsvs)
-- [pkg_file_iconsghsvs](https://github.com/GHSVS-de/pkg_file_iconsghsvs)
-- [pkg_lib_imgresizeghsvs](https://github.com/GHSVS-de/pkg_lib_imgresizeghsvs)
-- [pkg_lib_structuredataghsvs](https://github.com/GHSVS-de/pkg_lib_structuredataghsvs)
-- [plg_content_prismhighlighterghsvs](https://github.com/GHSVS-de/plg_content_prismhighlighterghsvs)
-- [plg_system_astroidghsvs](https://github.com/GHSVS-de/plg_system_astroidghsvs)
-- [plg_system_bs3ghsvs_bs5](https://github.com/GHSVS-de/plg_system_bs3ghsvs_bs5)
-- [plg_system_characterscounterghsvs](https://github.com/GHSVS-de/plg_system_characterscounterghsvs)
-- [plg_system_convertformsghsvs](https://github.com/GHSVS-de/plg_system_convertformsghsvs)
-- [plg_system_hyphenateghsvs](https://github.com/GHSVS-de/plg_system_hyphenateghsvs)
-- [plg_system_importfontsghsvs](https://github.com/GHSVS-de/plg_system_importfontsghsvs)
-- [plg_system_onuserghsvs](https://github.com/GHSVS-de/plg_system_onuserghsvs)
-- [plg_system_venoboxghsvs](https://github.com/GHSVS-de/plg_system_venoboxghsvs)
-- [tpl_bs4ghsvs](https://github.com/GHSVS-de/tpl_bs4ghsvs)
-
 ----------------------
 
 # My personal build procedure (WSL 1, Debian, Win 10)

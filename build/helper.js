@@ -218,14 +218,14 @@ Creates a *.gz of all .min.css and .min.js.
 module.exports.gzip = async (paths) =>
 {
 	console.log(pc.magenta(pc.bold(`Start helper.gzip: "${paths}".`)));
-  const tasks = [];
-  const compressTasks = [];
-  paths.map((path) => tasks.push(getFiles(`${path}/`)));
-paths.map((path) => tasks.push(getFiles(`${path}/`)));
-  const files = await Promise.all(tasks);
-  [].concat(...files).map((file) => compressTasks.push(compressFile(file, false)));
-  await Promise.all(compressTasks);
-  console.log(pc.green(pc.bold(`Ended helper.gzip: "${paths}".`)));
+	const tasks = [];
+	const compressTasks = [];
+	paths.map((path) => tasks.push(getFiles(`${path}/`)));
+	paths.map((path) => tasks.push(getFiles(`${path}/`)));
+	const files = await Promise.all(tasks);
+	[].concat(...files).map((file) => compressTasks.push(compressFile(file, false)));
+	await Promise.all(compressTasks);
+	console.log(pc.green(pc.bold(`Ended helper.gzip: "${paths}".`)));
 };
 
 /*

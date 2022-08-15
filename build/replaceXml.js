@@ -67,6 +67,7 @@ module.exports.main = async (replaceXmlOptions) =>
 		let checksum = replaceXmlOptions.checksum;
 		let thisPackages = replaceXmlOptions.thisPackages;
 		const xmlFileRel = path.relative(replaceXmlOptions.dirname, xmlFile)
+		let versionSub = replaceXmlOptions.versionSub ? replaceXmlOptions.versionSub : "";
 
 		let checksumEntity = '';
 
@@ -180,6 +181,7 @@ module.exports.main = async (replaceXmlOptions) =>
 			uses: uses.join("<br>"),
 			version: version,
 			versionCompare: versionCompare,
+			versionSub: versionSub,
 			xmlserver: update.xmlserver ? update.xmlserver : xmlserver,
 			infourl: update.infourl ? update.infourl : infourl,
 			zipFilename: zipFilename

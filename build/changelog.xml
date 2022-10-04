@@ -22,6 +22,11 @@
 		<addition>
 		</addition>
 
+		<addition>
+		</addition>
+
+		<additionalinfos>{{additionalInfosXml}}</additionalinfos>
+
 		<change>
 			<item><![CDATA[
 				<a href="{{projecturl}}/compare/{{versionCompare}}...{{version}}">

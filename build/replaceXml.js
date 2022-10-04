@@ -68,6 +68,15 @@ module.exports.main = async (replaceXmlOptions) =>
 		let thisPackages = replaceXmlOptions.thisPackages;
 		const xmlFileRel = path.relative(replaceXmlOptions.dirname, xmlFile)
 		let versionSub = replaceXmlOptions.versionSub ? replaceXmlOptions.versionSub : "";
+		let additionalInfos = replaceXmlOptions.additionalInfos ? replaceXmlOptions.additionalInfos : [];
+
+		let additionalInfosXml = '';
+
+		if (additionalInfos.length) {
+			additionalInfosXml = "\n<entry><![CDATA[\n";
+			additionalInfosXml += additionalInfos.join("<br>\n") + "\n";
+			additionalInfosXml += "]]></entry>\n";
+		}
 
 		let checksumEntity = '';
 
@@ -136,6 +145,8 @@ module.exports.main = async (replaceXmlOptions) =>
 
 		let replacer = {
 			addfieldprefix: addfieldprefix,
+			additionalInfos: additionalInfos.join("\n"),
+			additionalInfosXml: additionalInfosXml,
 			allowDowngrades: allowDowngrades,
 			authorName: author.name,
 			authorUrl: author.url,

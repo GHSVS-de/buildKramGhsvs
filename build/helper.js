@@ -153,9 +153,12 @@ module.exports.findVersionSubSimple = async (packagesFile, packageName) =>
 // Find version string by RegEx in a file.
 // Example:
 // The string to search in that file(s).
+//
 // const bsBundleRegExp = new RegExp(
 //	/\* Bootstrap \(v(\d+\.\d+\.\d+)\): index\.umd\.js/
 // );
+//
+// new RegExp(/\@version (\d+\.\d+\.\d+)/)
 module.exports.findVersionSubRegex = async (file, thisRegex, limit) =>
 {
 	if (!limit)

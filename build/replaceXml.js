@@ -67,6 +67,7 @@ module.exports.main = async (replaceXmlOptions) =>
 		let checksum = replaceXmlOptions.checksum;
 		let thisPackages = replaceXmlOptions.thisPackages;
 		const xmlFileRel = path.relative(replaceXmlOptions.dirname, xmlFile)
+
 		let versionSub = replaceXmlOptions.versionSub ? replaceXmlOptions.versionSub : "";
 		let additionalInfos = replaceXmlOptions.additionalInfos ? replaceXmlOptions.additionalInfos : [];
 
@@ -116,7 +117,7 @@ module.exports.main = async (replaceXmlOptions) =>
 		{
 			let tmp = "";
 
-			if (update.type === 'module')
+			if (update.type === 'module' || update.type === 'template')
 			{
 				// client = site|administrator
 				tmp = update.client;
@@ -125,6 +126,11 @@ module.exports.main = async (replaceXmlOptions) =>
 
 			addfieldprefix = ` addfieldprefix="${update.namespace}${tmp}\\Field"`;
 		}
+
+		// inheritable. See bug https://github.com/joomla/joomla-cms/pull/39329
+		let inheritable = update.inheritable ?
+			`<inheritable>${update.inheritable}</inheritable>`
+			: `<!--See Joomla bug https://github.com/joomla/joomla-cms/pull/39329: <inheritable>0</inheritable>-->`;
 
 		let thisPackagesHtml = '';
 
@@ -164,6 +170,7 @@ module.exports.main = async (replaceXmlOptions) =>
 			folder: update.folder,
 			infosDE: changelog.infosDE,
 			infosEN: changelog.infosEN,
+			inheritable: inheritable,
 			language: language.join("<br>"),
 			lastTests: changelog.lastTests.join('<br>'),
 			licenseLong: licenseLong,
@@ -197,6 +204,19 @@ module.exports.main = async (replaceXmlOptions) =>
 			infourl: update.infourl ? update.infourl : infourl,
 			zipFilename: zipFilename
 		};
+
+		if (update.versionsSub) {
+			let isObject = function(a) {
+				return (!!a) && (a.constructor === Object);
+			};
+
+			if (isObject(update.versionsSub)) {
+				Object.keys(update.versionsSub).forEach(key =>
+				{
+					replacer[`versionsSub.${key}`] = update.versionsSub[key];
+				});
+			}
+		}
 
 		let fileContent = '';
 

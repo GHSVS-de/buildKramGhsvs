@@ -88,7 +88,7 @@ module.exports.main = async (replaceXmlOptions) =>
 		}
 
 		let targetPlatforms = update.targetplatform;
-
+//console.log(targetPlatforms)
 		// B\C
 		if (! Array.isArray(targetPlatforms))
 		{
@@ -102,8 +102,10 @@ module.exports.main = async (replaceXmlOptions) =>
 			requires = releaseTxt.requires;
 		}
 
-		// Force 1 loop if not update.xml.
-		if (path.win32.basename(xmlFile) !== 'update.xml')
+		// Force 1 loop if not an update xml.
+		const loopChecks = ['update.xml', 'update_no-changelog.xml'];
+
+		if (loopChecks.includes(`${path.win32.basename(xmlFile)}`) === false)
 		{
 			targetPlatforms = [targetPlatforms.join(", ")];
 		}

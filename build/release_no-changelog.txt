@@ -1,0 +1,27 @@
+{{version}}
+
+{{releaseTxt.title}} {{version}}
+
+Checksum entities: `{{checksumEntity}}`
+
+{{description}}
+
+### Download
+[{{zipFilename}}]({{projecturl}}/raw/{{version}}/dist/{{zipFilename}})
+
+### Joomla-Target-Platform(s)
+{{targetplatformHtml}}
+
+### For the interested ones
+- [Compare releases {{versionCompare}}...{{version}}]({{projecturl}}/compare/{{versionCompare}}...{{version}})
+- Checksum: `{{checksum}}`
+- Updates XML: {{xmlserver}}/{{updateFilePrefix}}-update.xml
+- Last tests: {{lastTests}}
+- Language files: {{language}}
+- Requires: {{requires}}
+- Uses: {{uses}}
+- Contained packages (sub Joomla extensions):
+```
+{{thisPackages}}
+```
+{{additionalInfos}}

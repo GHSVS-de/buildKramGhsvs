@@ -25,9 +25,9 @@ module.exports.main = async (replaceXmlOptions) =>
 		// Can be overridden by parameter update.xmlserver in package.json.
 		const xmlserver = 'https://raw.githubusercontent.com/GHSVS-de/upadateservers/master';
 
-		// Base url to my PHP changelogs viewer. Used in <infourl>.
+		// See below. Base url to my PHP changelogs viewer. Used in <infourl>.
 		// Can be overridden by parameter update.infourl in package.json.
-		const infourl = 'https://updates.ghsvs.de/changelog.php';
+		let infourl = '';
 
 		let jsonObj = {};
 
@@ -151,6 +151,15 @@ module.exports.main = async (replaceXmlOptions) =>
 		let uses = releaseTxt.uses ? releaseTxt.uses : [];
 		let language = releaseTxt.language ? releaseTxt.language : [];
 
+		if (update.infourl)
+		{
+			infourl = update.infourl.replace(/{{thisRelease}}/g, `/releases/tag/${version}`)
+		}
+		else
+		{
+			infourl = `https://updates.ghsvs.de/changelog.php?file=${name}&amp;version=${version}`;
+		}
+
 		let replacer = {
 			addfieldprefix: addfieldprefix,
 			additionalInfos: additionalInfos.join("\n"),
@@ -203,7 +212,7 @@ module.exports.main = async (replaceXmlOptions) =>
 			versionCompare: versionCompare,
 			versionSub: versionSub,
 			xmlserver: update.xmlserver ? update.xmlserver : xmlserver,
-			infourl: update.infourl ? update.infourl : infourl,
+			infourl: infourl,
 			zipFilename: zipFilename
 		};
 

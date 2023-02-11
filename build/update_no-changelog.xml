@@ -7,7 +7,7 @@
 		<folder>{{folder}}</folder>
 		<client>{{client}}</client>
 		<version>{{version}}</version>
-		<infourl>{{infourl}}?file={{updateFilePrefix}}&amp;version={{version}}</infourl>
+		<infourl>{{infourl}}</infourl>
 		<downloads>
 			<downloadurl type="full" format="zip">{{projecturl}}/raw/{{version}}/dist/{{zipFilename}}</downloadurl>
 		</downloads>

@@ -59,6 +59,7 @@ module.exports.main = async (replaceXmlOptions) =>
 			minimumJoomla,
 			maximumJoomla,
 			allowDowngrades,
+			dbservertype,
 			bugs
 		} = jsonObj;
 
@@ -165,6 +166,7 @@ module.exports.main = async (replaceXmlOptions) =>
 			additionalInfos: additionalInfos.join("\n"),
 			additionalInfosXml: additionalInfosXml,
 			allowDowngrades: allowDowngrades,
+			dbservertype: dbservertype,
 			authorName: author.name,
 			authorUrl: author.url,
 			bugs: bugs,

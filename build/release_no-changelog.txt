@@ -2,8 +2,6 @@
 
 {{releaseTxt.title}} {{version}}
 
-Checksum entities: `{{checksumEntity}}`
-
 {{description}}
 
 ### Download
@@ -13,8 +11,15 @@ Checksum entities: `{{checksumEntity}}`
 {{targetplatformHtml}}
 
 ### For the interested ones
+- Deutsche Beschreibung: {{docsDE}}
+- English Description: {{docsEN}}
 - [Compare releases {{versionCompare}}...{{version}}]({{projecturl}}/compare/{{versionCompare}}...{{version}})
+- minimumJoomla: {{minimumJoomla}}
+- maximumJoomla: {{maximumJoomla}}
+- minimumPhp: {{minimumPhp}}
+- maximumPhp: {{maximumPhp}}
 - Checksum: `{{checksum}}`
+- Readme: {{readme}}
 - Updates XML: {{xmlserver}}/{{updateFilePrefix}}-update.xml
 - Last tests: {{lastTests}}
 - Language files: {{language}}

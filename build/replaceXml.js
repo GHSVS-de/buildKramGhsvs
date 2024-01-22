@@ -60,7 +60,8 @@ module.exports.main = async (replaceXmlOptions) =>
 			maximumJoomla,
 			allowDowngrades,
 			dbservertype,
-			bugs
+			bugs,
+			homepage
 		} = jsonObj;
 
 		let xmlFile = replaceXmlOptions.xmlFile;
@@ -90,7 +91,7 @@ module.exports.main = async (replaceXmlOptions) =>
 
 		let targetPlatforms = update.targetplatform;
 //console.log(targetPlatforms)
-		// B\C
+		// B\C. targetPlatforms String to Array
 		if (! Array.isArray(targetPlatforms))
 		{
 			targetPlatforms = [targetPlatforms];
@@ -108,7 +109,7 @@ module.exports.main = async (replaceXmlOptions) =>
 
 		if (loopChecks.includes(`${path.win32.basename(xmlFile)}`) === false)
 		{
-			targetPlatforms = [targetPlatforms.join(", ")];
+			targetPlatforms = [targetPlatforms.join('<br>')];
 		}
 
 		let namespace = update.namespace ?
@@ -201,6 +202,7 @@ module.exports.main = async (replaceXmlOptions) =>
 			nameUpper: name.toUpperCase(),
 			php_minimum: minimumPhp,
 			projecturl: changelog.projecturl,
+			readme: homepage,
 			"releaseTxt.title": releaseTxt.title,
 			requires: requires.join("<br>"),
 			tag: update.tag,

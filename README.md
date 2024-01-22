@@ -35,7 +35,7 @@ See `package.json.dependencies` for other npm packages provided by this repo.
 
 ----------------------
 
-# My personal build procedure (WSL 1, Debian, Win 10)
+# My personal build procedure (WSL 1 or 2, Debian, Win 10)
 
 - `cd /mnt/z/git-kram/buildKramGhsvs`
 
